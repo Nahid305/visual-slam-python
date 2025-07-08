@@ -1,7 +1,7 @@
-def run_slam_on_video(video_source=0):
-    import cv2
-    import numpy as np
+import cv2
+import numpy as np
 
+def run_slam_on_video(video_path):
     orb = cv2.ORB_create()
     bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 
@@ -12,11 +12,11 @@ def run_slam_on_video(video_source=0):
     trajectory = np.zeros((600, 600, 3), dtype=np.uint8)
     x, y = 300, 300
 
-    cap = cv2.VideoCapture(video_source)
+    cap = cv2.VideoCapture(video_path)
 
     ret, prev_frame = cap.read()
     if not ret:
-        print("Failed to read video source")
+        print("Error: Could not read video file.")
         return None
 
     prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)
@@ -50,20 +50,10 @@ def run_slam_on_video(video_source=0):
                 draw_x, draw_y = int(x + cur_t[0][0]*5), int(y + cur_t[2][0]*5)
                 cv2.circle(trajectory, (draw_x, draw_y), 1, (0, 255, 0), 2)
 
-            match_img = cv2.drawMatches(prev_frame, prev_kp, frame, kp, matches[:50], None, flags=2)
-            cv2.imshow("Feature Matches", match_img)
-            cv2.imshow("Trajectory", trajectory)
-
             prev_frame = frame.copy()
             prev_gray = gray.copy()
             prev_kp, prev_des = kp, des
-        else:
-            cv2.imshow("Feature Matches", frame)
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
 
     cap.release()
-    cv2.destroyAllWindows()
     cv2.imwrite("trajectory.png", trajectory)
     return "trajectory.png"
