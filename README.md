@@ -1,83 +1,89 @@
-# 📍 Visual SLAM in Python (Webcam + Video File + Streamlit GUI)
+# 📍 Visual SLAM Web App using Python & Streamlit
 
-A beginner-friendly Visual SLAM system built using Python and OpenCV. It allows real-time tracking of camera movement and plots the trajectory based on live webcam feed or uploaded video files. Includes a simple Streamlit GUI for demo and interaction.
+A real-time Visual SLAM (Simultaneous Localization and Mapping) demo web app that tracks camera movement using uploaded video files and plots the trajectory of the motion — all running in the cloud!
 
----
-
-## 🚀 What This Project Does
-
-- Detects keypoints in video frames using ORB (Oriented FAST and Rotated BRIEF)
-- Matches those keypoints frame-to-frame using Brute Force Matcher
-- Calculates camera motion using the Essential Matrix and pose recovery
-- Plots the estimated path (trajectory) of the camera on a blank canvas
-- Supports **both live webcam input** and **video upload**
-- Simple GUI using **Streamlit** for user-friendly interaction
+Built with Python, OpenCV, and Streamlit, this app runs fully in-browser without any local setup.
 
 ---
 
-## 📸 Demo
+## 🚀 Live Demo
 
-<img src="trajectory_demo.png" width="600"/>
-
-> Optional: [📹 Watch Demo Video](https://youtu.be/your-demo-video-link)
+🔗 [Try the Web App](https://your-streamlit-app-link.streamlit.app)  
+*(Replace with your actual Streamlit Cloud link)*
 
 ---
 
-## 🧰 Tech Stack
+## 📦 Features
 
-- Python
-- OpenCV
+- ✅ Upload any indoor or outdoor camera video
+- 🔍 Detects & tracks keypoints frame-to-frame
+- 📐 Estimates camera motion using ORB + Essential Matrix
+- 🗺️ Draws and displays the camera’s trajectory path
+- ☁️ Runs fully in the cloud via Streamlit (no installation needed)
+
+---
+
+## 📽️ What is Visual SLAM?
+
+Visual SLAM helps devices like robot vacuums, drones, or AR apps to understand where they are **and** build a map — using only camera input.
+
+This app simulates that behavior by:
+1. Extracting keypoints using ORB
+2. Matching features between frames
+3. Estimating camera pose from motion
+4. Drawing a trajectory map
+
+---
+
+## 🛠️ Tech Stack
+
+- Python 3
+- OpenCV (`opencv-python-headless`)
 - NumPy
-- Matplotlib
 - Streamlit
+- Matplotlib
 
 ---
 
-## 🧠 Real-Life Applications
+## 💻 How to Run Locally
 
-- Self-driving cars & robot navigation
-- AR/VR camera tracking
-- Indoor mapping and SLAM research
-- Drone flight path tracking
-
----
-
-## 📂 Project Structure
-
- visual-slam-python/
-│
-├── main.py # Core Visual SLAM logic
-├── app.py # Streamlit GUI
-├── requirements.txt # Dependencies
-├── trajectory.png # Output path map (auto-generated)
-└── README.md # Project ove
-
-## 🏃 How to Run
-
-1. Install dependencies
 ```bash
- pip install -r requirements.txt
+git clone https://github.com/your-username/visual-slam-python.git
+cd visual-slam-python
 
-2.Run core SLAM (webcam)
- python main.py
+# Create a virtual environment (optional)
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
-3.Run with GUI (Streamlit)
- streamlit run app.py
+# Install dependencies
+pip install -r requirements.txt
 
-🧪 Test Videos
-Use your own phone-recorded video or try open datasets like:
+# Run the app
+streamlit run app.py
+ 🧪 Test Video Suggestions
+You can record your own indoor phone camera video or download from:
 
-.KITTI Odometry Dataset
-.TUM RGB-D Dataset
+ KITTI Odometry Dataset
+ TUM RGB-D Dataset
+
+📂 Project Structure
+visual-slam-python/
+│
+├── app.py               # Streamlit GUI
+├── main.py              # Core SLAM logic
+├── requirements.txt     # Python dependencies
+└── README.md            # Project overview
+
+🙋 About Me
+👨‍💻 Developed by Nahid Ansari
+
+Always exploring AI, computer vision, and intelligent systems.
+
+⭐ Like this project?
+
+ Give it a ⭐ on GitHub
+ Share your feedback or ideas
+ Feel free to fork and contribute!
 
 
-🙌 Contributions & Feedback
-Pull requests and feedback are welcome!
-If this helped you, feel free to ⭐ the repo and share it.
-
-📬 Contact
-Built by Nahid Ansari
-Let’s connect and collaborate!
-
----
 
